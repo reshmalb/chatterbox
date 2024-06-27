@@ -1,12 +1,55 @@
+import { Grid } from "@mui/material";
+import Title from "../../shared/Title";
+import Header from "./Header";
+import { Grid3x3 } from "@mui/icons-material";
 
-const AppLayout = () => WrappedComponent => {
-  return ()=>{
-    <div>
-        <h1>Headrr</h1>
-        <WrappedComponent/>
-        <h1>Footer</h1>
-    </div>
-  }
-}
+const AppLayout = () => (WrappedComponent) => {
+  return (props) => (
+    <>
+      <Title />
+      <Header />
+      <Grid container height="calc(100vh - 4rem)">
+        <Grid 
+        item 
+        sm={4}
+        md={3}
+        sx={{
+          display:{xs:"none",sm: "block"},
 
-export default AppLayout
+        }}
+         height="100%">
+     
+ 
+          first
+        </Grid>
+        <Grid  
+        item
+         xs={12}
+         sm={8}
+         md={5}
+         lg={6}
+         bgcolor={"primary.main"}
+          height="100%">
+          
+          <WrappedComponent {...props} />{" "}
+        </Grid>
+        <Grid
+          item
+         md={4} 
+         lg={3}
+      
+         sx={{
+          display:{xs:"none",md: "block"},
+          padding:"2rem",
+          bgcolor:"rgba(0,0,0,0.85)",
+             height:"100%"
+
+        }}>
+          Third
+        </Grid>
+      </Grid>
+    </>
+  );
+};
+
+export default AppLayout;

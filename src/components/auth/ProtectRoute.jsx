@@ -1,18 +1,17 @@
 import { Navigate, Outlet } from 'react-router-dom'
 import PropTypes from 'prop-types';
-
+ 
 const ProtectRoute = ({children,user,redirect="/login"}) => {
     if (!user) return <Navigate to={redirect} />
 
-    return children ? children :<Outlet/>;
-         
+    return children? children: <Outlet />;        
 
 }
 
 export default ProtectRoute;
 
 ProtectRoute.propTypes = {
-    children: PropTypes.node.isRequired,     
+    children: PropTypes.node,
     user: PropTypes.oneOfType([             
         PropTypes.object,
         PropTypes.bool,
