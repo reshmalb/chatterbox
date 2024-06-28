@@ -4,6 +4,7 @@ import Header from "./Header";
 import ChatList from "../specific/ChatList";
 import {Chats} from "../constants/SampleData"
 import { useParams } from "react-router-dom";
+import Profile from "../specific/Profile";
 
 // Higher-order component (HOC)
 const AppLayout = (WrappedComponent) => {
@@ -66,24 +67,25 @@ const AppLayout = (WrappedComponent) => {
             sx={{
               display: { xs: "none", md: "block" },
               padding: "2rem",
-              bgcolor: "rgba(0,0,0,0.85)",
+               bgcolor: "rgba(0,0,0,0.85)",
               height: "100%",
             }}
           >
-            Third
+           <Profile/>
           </Grid>
+
+                  
+              
         </Grid>
       </>
     );
   };
 
-  // Safeguard to ensure WrappedComponent is defined before setting displayName
   WithLayout.displayName = `AppLayout(${getDisplayName(WrappedComponent)})`;
 
   return WithLayout;
 };
 
-// Helper function to get the display name of the wrapped component
 const getDisplayName = (WrappedComponent) => {
   if (!WrappedComponent) {
     return "UndefinedComponent";
