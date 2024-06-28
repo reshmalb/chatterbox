@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Toolbar, Tooltip, Typography } from "@mui/material";
+import { AppBar, Backdrop, IconButton, Toolbar, Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { orange } from "../constants/color";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -73,7 +73,7 @@ const Header = () => {
           >
             Chat App
           </Typography>
-          <Box    sx={{
+       <Box    sx={{
               display: { xs: "block", sm: "none" },
             }}>
             <IconButton color="inherit" onClick={handleMobile}>
@@ -96,21 +96,21 @@ const Header = () => {
     </Box>
 
     {isSearch &&(
-        <Suspense fallback={<div>Search Loading...</div>}>
+        <Suspense fallback={<Backdrop open={true} />}>
              <SearchDialog/>
 
         </Suspense>
        
     )}
       {isNotification &&(
-        <Suspense fallback={<div> Loading...</div>}>
+        <Suspense fallback={<Backdrop open={true} />}>
              <NotificationDialog/>
 
         </Suspense>
        
     )}
       {isNewGroup &&(
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Backdrop open={true} />}>
              <NewGroupDialog/>
 
         </Suspense>
