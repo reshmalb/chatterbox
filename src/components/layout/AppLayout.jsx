@@ -2,6 +2,8 @@ import { Grid } from "@mui/material";
 import Title from "../shared/Title";
 import Header from "./Header";
 import ChatList from "../specific/ChatList";
+import {Chats} from "../constants/SampleData"
+import { useParams } from "react-router-dom";
 
 // Higher-order component (HOC)
 const AppLayout = (WrappedComponent) => {
@@ -11,8 +13,14 @@ const AppLayout = (WrappedComponent) => {
   }
 
   const WithLayout = (props) => {
-    const chats = [1, 2, 3, 4, 5,6,9,80];
+      const params= useParams();
+     const chatId= params.chatId;
 
+  
+     const handleDeleteChat=(e ,_id, groupChat)=>{
+       e.preventDefault();
+        console.log("Delete chat",_id,groupChat)
+     }
     return (
       <>
         <Title />
@@ -27,15 +35,26 @@ const AppLayout = (WrappedComponent) => {
             }}
             height="100%"
           >
-            <ChatList chats={chats} />
+            <ChatList
+             chats={Chats} 
+             chatId={chatId} 
+             handleDeleteChat={handleDeleteChat}
+            //  newMessageAlert={[
+            //   {
+            //     chatId,
+            //     count:4
+            //   }
+            //  ]}
+            //  onlineUsers={["1","2"]}
+             
+             />
           </Grid>
           <Grid
             item
             xs={12}
             sm={8}
             md={5}
-            lg={6}
-            bgcolor={"primary.main"}
+            lg={6}          
             height="100%"
           >
             <WrappedComponent {...props} />

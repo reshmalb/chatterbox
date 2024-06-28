@@ -73,7 +73,7 @@ const Header = () => {
           >
             Chat App
           </Typography>
-       <Box    sx={{
+           <Box    sx={{
               display: { xs: "block", sm: "none" },
             }}>
             <IconButton color="inherit" onClick={handleMobile}>
